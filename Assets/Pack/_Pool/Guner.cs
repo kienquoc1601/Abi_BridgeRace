@@ -12,6 +12,14 @@ public class Guner : MonoBehaviour
 
     private float time = 0;
 
+    List<Brick> bricks = new List<Brick>();
+
+    private void Start()
+    {
+        Brick brick = SimplePool.Spawn<Brick>(PoolType.Brick, Vector3.zero, Quaternion.identity);
+        bricks.Add(brick);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -42,6 +50,6 @@ public class Guner : MonoBehaviour
             SimplePool.Spawn<Bullet>(PoolType.Bullet_2 , bulletPoints[i].position, bulletPoints[i].rotation).OnInit();
         }
 
-        SimplePool.Spawn<Brick>(PoolType.Brick, Vector3.zero, Quaternion.identity).OnInit();
+        //SimplePool.Spawn<Brick>(PoolType.Brick, Vector3.zero, Quaternion.identity).OnInit();
     }
 }

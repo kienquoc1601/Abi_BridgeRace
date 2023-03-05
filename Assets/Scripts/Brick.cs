@@ -7,34 +7,33 @@ public class Brick : GameUnit
     public MeshRenderer ren;
     public ColorData colorData;
     public ColorType currentColor;
+    //private List<ColorType> colorPool = new List<ColorType>();
     // Start is called before the first frame update
     public void OnInit()
     {
-        ren = GetComponent<MeshRenderer>();
-        ChangeRandomColor(ren);
+        InvisibleState();
     }
     public void OnDespawn()
     {
         SimplePool.Despawn(this);
     }
 
-    void ChangeRandomColor(MeshRenderer ren)
+    public void ChangeRandomColor(List<ColorType> colorPool)
     {
-        int i = Random.Range(1, 7);
-        ren.material = colorData.GetColor((ColorType)i);
-        currentColor = (ColorType)i;
+        
+        int i = Random.Range(0, colorPool.Count);
+        ren.material = colorData.GetColor(colorPool[i]);
+        currentColor = colorPool[i];
     }
-    private void OnTriggerEnter(Collider collider)
+    public void InvisibleState()
     {
-        GameObject other = collider.gameObject;
-        if (other.tag == "Player")
-        {        
-            if (other.GetComponent<Player>().currentColor == currentColor)
-            {
-                Debug.Log("aaa");
-                ren.material = colorData.GetColor(ColorType.Invisible);
-                currentColor = ColorType.Invisible;
-            }
-        }
+        ren.material = colorData.GetColor(ColorType.Invisible);
+        currentColor = ColorType.Invisible;
     }
+    //public void PickUp()
+    //{
+    //    ren.material = colorData.GetColor(ColorType.Invisible);
+    //    currentColor = ColorType.Invisible;
+    //}
+
 }

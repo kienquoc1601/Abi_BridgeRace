@@ -149,6 +149,7 @@ public enum PoolType
     Bullet_3,
     Bullet_4,
     Brick,
+    Stair,
 }
 
 

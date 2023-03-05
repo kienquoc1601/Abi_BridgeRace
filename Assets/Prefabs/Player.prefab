@@ -941,6 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4d538f4da31f14e93684b98c4ad118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 7766601515194077941}
   brickPrefab: {fileID: 8566910689811742150, guid: 48c6d971288de694588dd5902a4426e9, type: 3}
   brickParent: {fileID: 7766601513981143598}
   stack: 0

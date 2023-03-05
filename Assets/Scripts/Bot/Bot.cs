@@ -4,9 +4,9 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
-public class Player : MonoBehaviour
+public class Bot : MonoBehaviour
 {
-    
+
 
     //Color -------------------------
     public SkinnedMeshRenderer ren;
@@ -17,22 +17,14 @@ public class Player : MonoBehaviour
     void Start()
     {
         ChangeColor(ren, currentColor);
-        
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
+
     }
 
-    void ChangeColor(SkinnedMeshRenderer ren , ColorType color) 
+    void ChangeColor(SkinnedMeshRenderer ren, ColorType color)
     {
         ren.material = colorData.GetColor(color);
         currentColor = color;
     }
-    
-
-
 
 }
+
