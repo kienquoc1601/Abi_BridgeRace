@@ -4,7 +4,7 @@ using UnityEngine;
 public class GridSpawnPrefab : MonoBehaviour
 {
 
-    private List<Brick> bricks = new List<Brick>();
+    public List<Brick> bricks = new List<Brick>();
     private List<ColorType> colorPool = new List<ColorType>();
     public int gridX;
     public int gridZ;
@@ -13,6 +13,9 @@ public class GridSpawnPrefab : MonoBehaviour
     public Vector3 gridOrigin = Vector3.zero;
     public int group;
 
+    //timer
+    public float timer = 0f;
+    public float updateTime = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +27,18 @@ public class GridSpawnPrefab : MonoBehaviour
     }
     private void Update()
     {
+        timer +=  Time.deltaTime; 
         if (Input.GetKeyDown("space"))
         {
             Debug.Log(colorPool.ToString());
             Debug.Log(colorPool.Count);
             UpdateGridColor();
+        }
+        if(timer >= updateTime)
+        {
+            
+            UpdateGridColor();
+            timer = 0;
         }
     }
     void SpawnGrid()
@@ -79,14 +89,26 @@ public class GridSpawnPrefab : MonoBehaviour
         brick.OnInit();
         bricks.Add(brick);
     }
-    List<Brick> GetAllBrickByColor(ColorType color)
+    public List<Brick> GetAllBrickByColor(ColorType color)
     {
         List<Brick> colorBricks = new List<Brick>();
-        for(int i = 0; i <= bricks.Count; i++)
+        for(int i = 0; i < bricks.Count; i++)
         {
             if (bricks[i].currentColor == color)
             {
                 colorBricks.Add(bricks[i]);
+            }
+        }
+        return colorBricks;
+    }
+    public List<Transform> GetAllBrickTranformByColor(ColorType color)
+    {
+        List<Transform> colorBricks = new List<Transform>();
+        for (int i = 0; i < bricks.Count; i++)
+        {
+            if (bricks[i].currentColor == color)
+            {
+                colorBricks.Add(bricks[i].transform);
             }
         }
         return colorBricks;

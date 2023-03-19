@@ -7,6 +7,7 @@ TagManager:
   - Brick
   - Stair
   - Bot
+  - Platform
   layers:
   - Default
   - TransparentFX

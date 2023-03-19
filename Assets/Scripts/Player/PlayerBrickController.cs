@@ -40,6 +40,10 @@ public class PlayerBrickController : MonoBehaviour
         }
         if(collider.CompareTag(TAG_STAIR))
         {
+            if(other.GetComponent<Stair>().currentColor != player.currentColor)
+            {
+
+            }
             other.GetComponent<Stair>().BuildStair(currentColor);
             RemoveBrick();
         }

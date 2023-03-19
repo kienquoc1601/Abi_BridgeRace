@@ -26,11 +26,13 @@ public class PlayerController : MonoBehaviour
         //this.gameObject.transform.rotation= Quaternion.Euler(joy.Horizontal, 0, joy.Vertical);
         Move(moveInput, rb, speed);
     }
-    public static void Move(Vector3 moveInput, Rigidbody rigidbody, float speed)
+    public void Move(Vector3 moveInput, Rigidbody rigidbody, float speed)
     {
         Vector3 vel = rigidbody.velocity;
-        //Quaternion deltaRotation = Quaternion.Euler(moveInput * Time.fixedDeltaTime);
-        //rigidbody.MoveRotation(Quaternion.LookRotation(vel));
+        
+        Quaternion rotation =Quaternion.LookRotation(new Vector3(joy.Horizontal, 0f, joy.Vertical));
+        rigidbody.transform.rotation = rotation;
+        //do raycast
         rigidbody.MovePosition(rigidbody.position + moveInput * speed * Time.fixedDeltaTime);
     }
     public bool IsGrounded()

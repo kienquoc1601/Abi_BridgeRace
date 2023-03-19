@@ -325,12 +325,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8210b001f66d3243a7401ff677a0efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bricks: []
   gridX: 10
   gridZ: 10
   gridSpacingOffset: 2
   startPos: {x: 0, y: 0, z: 0}
   gridOrigin: {x: 0, y: 1, z: 0}
   group: 0
+  timer: 0
+  updateTime: 3
 --- !u!4 &338404529
 Transform:
   m_ObjectHideFlags: 0
@@ -376,7 +379,7 @@ GameObject:
   - component: {fileID: 583218269}
   m_Layer: 0
   m_Name: PlatformTrigger
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,8 +392,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583218267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.23, y: 0, z: -2.99}
-  m_LocalScale: {x: 20.246151, y: 1, z: 3.2059}
+  m_LocalPosition: {x: 10.23, y: 0, z: 5.84}
+  m_LocalScale: {x: 20.246151, y: 1.2318, z: 21.518202}
   m_Children: []
   m_Father: {fileID: 955033490}
   m_RootOrder: 0
@@ -726,12 +729,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8210b001f66d3243a7401ff677a0efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bricks: []
   gridX: 10
   gridZ: 10
   gridSpacingOffset: 2
   startPos: {x: 0, y: 0, z: 0}
   gridOrigin: {x: 0, y: 1, z: 0}
   group: 0
+  timer: 0
+  updateTime: 3
 --- !u!4 &955033490
 Transform:
   m_ObjectHideFlags: 0
@@ -758,6 +764,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -824,12 +831,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -2, y: 23.130001, z: 3}
+  m_LocalPosition: {x: -16.55, y: 25.44, z: -21.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 598456281}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: -180, z: 180}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1ec72e0855fcd46b3b4833c043d00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 598456281}
+  offset: {x: 0, y: 20, z: 0}
 --- !u!4 &1157493920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1271336959516744929, guid: f526b55c647f0e945a590a322d1e75b7, type: 3}
@@ -985,8 +1006,9 @@ GameObject:
   - component: {fileID: 1424008367}
   - component: {fileID: 1424008366}
   - component: {fileID: 1424008365}
+  - component: {fileID: 1424008369}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas-root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1073,6 +1095,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1424008369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424008364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcba0ab4d3158eb4084119c444681521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvasParentTF: {fileID: 1424008368}
 --- !u!4 &1426842896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1271336959516744929, guid: f526b55c647f0e945a590a322d1e75b7, type: 3}
@@ -2477,11 +2512,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7766601515018349232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50a8a17d93050544faac6f44155513f5, type: 3}
+  m_Script: {fileID: 11500000, guid: bd092b610e66ce84ba7819e93f8d4bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePosition: {fileID: 598456281}
+  movePos: {fileID: 0}
   nav: {fileID: 7766601515018349236}
+  brickCount: 0
+  brickPool: []
+  currentColor: 2
 --- !u!54 &7766601515018349234
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2591,7 +2629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7766601515018349232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.634, y: 2.31, z: -25.1}
+  m_LocalPosition: {x: -19.2, y: 2.31, z: -25.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7766601515968615018}
@@ -2641,7 +2679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7766601515194077945, guid: 268e98eaee7a4834f8bfdd1aa89da402, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.86
+      value: -14.55
       objectReference: {fileID: 0}
     - target: {fileID: 7766601515194077945, guid: 268e98eaee7a4834f8bfdd1aa89da402, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2649,7 +2687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7766601515194077945, guid: 268e98eaee7a4834f8bfdd1aa89da402, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.37
+      value: -24.89
       objectReference: {fileID: 0}
     - target: {fileID: 7766601515194077945, guid: 268e98eaee7a4834f8bfdd1aa89da402, type: 3}
       propertyPath: m_LocalRotation.w
