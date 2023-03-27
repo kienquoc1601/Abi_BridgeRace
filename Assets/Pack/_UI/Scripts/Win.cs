@@ -1,3 +1,4 @@
+using Assets.Scripts.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class Win : UICanvas
 
     public void MainMenuButton()
     {
-        UIManager.Ins.OpenUI<MianMenu>();
+        GameManager.Instance.NextLevel();
         Close(0);
     }
 }

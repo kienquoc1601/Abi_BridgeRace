@@ -30,8 +30,8 @@ public class GridSpawnPrefab : MonoBehaviour
         timer +=  Time.deltaTime; 
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log(colorPool.ToString());
-            Debug.Log(colorPool.Count);
+            //Debug.Log(colorPool.ToString());
+            //Debug.Log(colorPool.Count);
             UpdateGridColor();
         }
         if(timer >= updateTime)

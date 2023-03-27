@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public SkinnedMeshRenderer ren;
     public ColorData colorData;
     public ColorType currentColor = ColorType.Red;
+    public bool isKnocked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,14 @@ public class Player : MonoBehaviour
         ChangeColor(ren, currentColor);
         
     }
-    
-    // Update is called once per frame
-    void Update()
+
+    public IEnumerator KnockDown()
     {
-        
+        isKnocked=true;
+        Debug.Log("Player : Ouch");
+        yield return new WaitForSeconds(2f);
+        isKnocked = false;
+        Debug.Log("Player : asdasdasd");
     }
 
     void ChangeColor(SkinnedMeshRenderer ren , ColorType color) 

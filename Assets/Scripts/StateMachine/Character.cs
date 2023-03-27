@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
         {
             PlatformTrigger plat = other.GetComponent<PlatformTrigger>();
             brickPool = plat.grid.GetAllBrickTranformByColor(currentColor);
-            Debug.Log(brickPool.Count);
+            //Debug.Log(brickPool.Count);
         }
     }
     public void ChangeState(IState<Character> state)

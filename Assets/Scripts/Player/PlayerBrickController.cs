@@ -14,7 +14,7 @@ public class PlayerBrickController : MonoBehaviour
 
     public static string TAG_BRICK = "Brick";
     public static string TAG_STAIR = "Stair";
-    
+    public static string TAG_BOT = "Bot";
     void Start()
     {
         currentColor = player.currentColor;
@@ -42,10 +42,22 @@ public class PlayerBrickController : MonoBehaviour
         {
             if(other.GetComponent<Stair>().currentColor != player.currentColor)
             {
+                other.GetComponent<Stair>().BuildStair(currentColor);
+                RemoveBrick();
 
             }
-            other.GetComponent<Stair>().BuildStair(currentColor);
-            RemoveBrick();
+            
+        }
+        if (collider.CompareTag(TAG_BOT))
+        {
+            if (other.GetComponent<BotBrickController>().stack <= stack)
+            {
+                StartCoroutine(other.GetComponent<Bot>().KnockDown());
+                
+            }else if (other.GetComponent<BotBrickController>().stack > stack)
+            {
+                StartCoroutine(player.KnockDown());
+            }
         }
     }
 

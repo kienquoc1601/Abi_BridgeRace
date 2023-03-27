@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public Transform player;
-    public Vector3 offset;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform _player;
+    [SerializeField] private float _speed;
+
+    private Transform _camera;
+
+    [SerializeField] private Vector3 _offset;
+
+    private void Awake()
     {
-        
+        _camera = this.transform;
+        _offset = _camera.position - _player.position;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void LateUpdate()
     {
-        transform.position = player.position + offset;
+        Follow();
+    }
+
+    private void Follow()
+    {
+        _camera.position = Vector3.Lerp(_camera.position, _offset + _player.position, Time.deltaTime * _speed);
     }
 }
