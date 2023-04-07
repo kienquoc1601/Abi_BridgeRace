@@ -7,6 +7,7 @@ public class Brick : GameUnit
     public MeshRenderer ren;
     public ColorData colorData;
     public ColorType currentColor;
+    public int groupNum;
     //private List<ColorType> colorPool = new List<ColorType>();
     // Start is called before the first frame update
     public void OnInit()

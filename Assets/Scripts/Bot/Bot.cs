@@ -17,7 +17,6 @@ public class Bot : MonoBehaviour
     void Start()
     {
         ChangeColor(ren, currentColor);
-
     }
     public IEnumerator KnockDown()
     {

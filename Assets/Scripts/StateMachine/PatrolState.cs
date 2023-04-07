@@ -13,7 +13,8 @@ public class PatrolState : IState<Character>
 
     public void OnExecute(Character t)
     {
-        if(Vector3.Distance(t.transform.position , t.movePos.position) < 1)
+        Debug.Log("Patrol");
+        if(Vector3.Distance(t.transform.position , t.movePos.position) < 2f)
         {
             t.ChangeState(new IdleState());
             

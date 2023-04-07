@@ -12,13 +12,17 @@ public class Character : MonoBehaviour
     public static string TAG_PLATFORM = "Platform";
     public List<Transform> brickPool = new List<Transform>();
     public ColorType currentColor;
-    
-
+    public int currentGrid;
+    public SkinnedMeshRenderer ren;
+    public ColorData colorData;
+    //public ColorType currentColor = ColorType.Red;
+    public bool isKnocked = false;
     private void Start()
     {
-        currentColor = this.GetComponent<Bot>().currentColor;
+        ChangeColor(ren, currentColor);
+        //currentColor = this.GetComponent<Bot>().currentColor;
         ChangeState(new IdleState());
-        
+
     }
 
     // Update is called once per frame
@@ -56,5 +60,10 @@ public class Character : MonoBehaviour
     public void MoveToward(Transform moveToPos)
     {
         nav.destination = moveToPos.position;
+    }
+    void ChangeColor(SkinnedMeshRenderer ren, ColorType color)
+    {
+        ren.material = colorData.GetColor(color);
+        currentColor = color;
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BotBrickController : MonoBehaviour
 {
-    public Bot bot;
+    //public Bot bot;
+    public Character character;
     public StackBrick brickPrefab;
     public Transform brickParent;
     public int stack;
@@ -16,14 +17,10 @@ public class BotBrickController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentColor = bot.currentColor;
+        currentColor = character.currentColor;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     private void OnTriggerEnter(Collider collider)
     {
         GameObject other = collider.gameObject;
@@ -51,10 +48,10 @@ public class BotBrickController : MonoBehaviour
         //make brick and set parent
         StackBrick brick = Instantiate(brickPrefab, brickParent);
         //set brickPoint height
-        brick.transform.localPosition = new Vector3(0, stack * 0.2f, 0);
-        brick.ren.material = bot.colorData.GetColor(currentColor);
+        brick.transform.localPosition = new Vector3(0, character.brickCount * 0.2f, 0);
+        brick.ren.material = character.colorData.GetColor(currentColor);
         bricks.Add(brick);
-        stack++;
+        character.brickCount++;
     }
 
     public void RemoveBrick()
@@ -64,7 +61,7 @@ public class BotBrickController : MonoBehaviour
             StackBrick brick = bricks[bricks.Count - 1];
             bricks.RemoveAt(bricks.Count - 1);
             Destroy(brick.gameObject);
-            stack--;
+            character.brickCount--;
 
         }
         else

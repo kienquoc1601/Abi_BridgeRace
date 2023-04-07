@@ -12,11 +12,13 @@ public class IdleState : IState<Character>
 
     public void OnExecute(Character t)
     {
-        if(t.brickCount > 10)
+        Debug.Log("idle");
+        if (t.brickCount > 3)
         {
+            t.currentGrid++;
             t.ChangeState(new AttackState());
         }
-        if(t.brickPool.Count > 0)
+        else if (t.brickPool.Count > 0)
         {
             int ran = Random.Range(0, t.brickPool.Count);
             t.movePos = t.brickPool[ran];
@@ -29,7 +31,7 @@ public class IdleState : IState<Character>
 
     public void OnExit(Character t)
     {
-
+        
     }
 
 }

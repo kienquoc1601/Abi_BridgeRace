@@ -50,11 +50,11 @@ public class PlayerBrickController : MonoBehaviour
         }
         if (collider.CompareTag(TAG_BOT))
         {
-            if (other.GetComponent<BotBrickController>().stack <= stack)
+            if (other.GetComponent<Character>().brickCount <= stack)
             {
                 StartCoroutine(other.GetComponent<Bot>().KnockDown());
                 
-            }else if (other.GetComponent<BotBrickController>().stack > stack)
+            }else if (other.GetComponent<Character>().brickCount > stack)
             {
                 StartCoroutine(player.KnockDown());
             }

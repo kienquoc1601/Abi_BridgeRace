@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour
                 Stair stair = checkStairHit.transform.gameObject.GetComponent<Stair>();
                 if (stair.currentColor != transform.gameObject.GetComponent<Player>().currentColor && transform.gameObject.GetComponent<PlayerBrickController>().stack <=0 )
                 {
-                    
                     return false;
                 }
                 

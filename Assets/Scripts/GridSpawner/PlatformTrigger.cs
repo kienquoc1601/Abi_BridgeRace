@@ -9,16 +9,7 @@ public class PlatformTrigger : MonoBehaviour
     public static string TAG_PLAYER = "Player";
     public static string TAG_BOT= "Bot";
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,14 +17,19 @@ public class PlatformTrigger : MonoBehaviour
         if (other.CompareTag(TAG_PLAYER) )
         {
             Player player = other.GetComponent<Player>();
+            
             grid.AddColorToPool(player.currentColor);
-            Debug.Log(player.currentColor.ToString());
+            //Debug.Log(player.currentColor.ToString());
 
         }else if (other.CompareTag(TAG_BOT))
         {
-            Bot bot = other.GetComponent<Bot>();
+            Character bot = other.GetComponent<Character>();
+            bot.brickPool.Clear();
+            //bot.currentGrid = grid.group;
+            bot.ChangeState(new IdleState());
             grid.AddColorToPool(bot.currentColor);
-            Debug.Log(bot.currentColor.ToString());
+            
+            //Debug.Log(bot.currentColor.ToString());
         }
     }
 }

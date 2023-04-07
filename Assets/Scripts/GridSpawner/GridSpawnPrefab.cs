@@ -86,6 +86,7 @@ public class GridSpawnPrefab : MonoBehaviour
     void SpawnByIndex(Vector3 pos, Quaternion rotation, int index)
     {
         Brick brick = SimplePool.Spawn<Brick>(PoolType.Brick, pos, rotation);
+        brick.groupNum = group;
         brick.OnInit();
         bricks.Add(brick);
     }
