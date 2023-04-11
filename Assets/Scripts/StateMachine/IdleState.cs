@@ -13,7 +13,7 @@ public class IdleState : IState<Character>
     public void OnExecute(Character t)
     {
         Debug.Log("idle");
-        if (t.brickCount > 3)
+        if (t.brickCount > 30)
         {
             t.currentGrid++;
             t.ChangeState(new AttackState());
